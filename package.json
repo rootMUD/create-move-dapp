@@ -1,0 +1,41 @@
+{
+  "name": "create-apt-dapp",
+  "description": "a starter kit for dapp developers to build rootmup application",
+  "version": "0.0.1",
+  "license": "Apache-2.0",
+  "author": "rootMUD",
+  "keywords": [
+    "create aptos dapp",
+    "rootMUD",
+    "aptos"
+  ],
+  "bin": {
+    "create-apt-dapp": "./dist/index.js"
+  },
+  "scripts": {
+    "clean": "rm -rf dist",
+    "build": "npm run clean && tsc && cp -r templates dist/templates",
+    "dev": "npm run build && node dist/index.js",
+    "prepublish": "npm run build && npm publish"
+  },
+  "files": [
+    "dist"
+  ],
+  "type": "module",
+  "dependencies": {
+    "kolorist": "^1.8.0",
+    "prompts": "^2.4.2",
+    "typescript": "^4.7.4"
+  },
+  "devDependencies": {
+    "@types/node": "^20.5.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/rootMUD/create-apt-dapp"
+  },
+  "homepage": "https://github.com/rootMUD/create-apt-dapp/blob/main/README.md",
+  "bugs": {
+    "url": "https://github.com/rootMUD/create-apt-dapp/issues"
+  }
+}
