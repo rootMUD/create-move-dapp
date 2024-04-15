@@ -25,10 +25,9 @@ export const workflowOptions = {
     name: "packageManager",
     message: "Choose your package manager",
     choices: [
-      { title: "npm", value: "npm" },
       { title: "yarn", value: "yarn" },
       { title: "pnpm", value: "pnpm" },
     ],
-    initial: "npm",
+    initial: 0,
   },
 };

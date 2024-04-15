@@ -1,16 +1,16 @@
 {
-  "name": "create-apt-dapp",
+  "name": "create-apt-app",
   "description": "a starter kit for dapp developers to build rootmup application",
-  "version": "0.0.1",
+  "version": "0.0.5",
   "license": "Apache-2.0",
   "author": "rootMUD",
   "keywords": [
-    "create aptos dapp",
+    "create aptos app",
     "rootMUD",
     "aptos"
   ],
   "bin": {
-    "create-apt-dapp": "./dist/index.js"
+    "create-apt-app": "./dist/index.js"
   },
   "scripts": {
     "clean": "rm -rf dist",
@@ -25,7 +25,8 @@
   "dependencies": {
     "kolorist": "^1.8.0",
     "prompts": "^2.4.2",
-    "typescript": "^4.7.4"
+    "typescript": "^4.7.4",
+    "user": "^0.0.0"
   },
   "devDependencies": {
     "@types/node": "^20.5.0"

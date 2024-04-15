@@ -57,17 +57,7 @@ export const generateDapp = async (selection: Selections) => {
   pkg.name = projectName;
 
   // add npm scripts
-  if (selection.environment === "node") {
-    pkg.scripts[
-      "postinstall"
-    ] = `cd node && ${selection.packageManager} install`;
-    pkg.scripts["start"] = `cd node && ts-node index.ts`;
-  } else {
-    pkg.scripts[
-      "postinstall"
-    ] = `cd frontend && ${selection.packageManager} install`;
-    pkg.scripts["start"] = `cd frontend && ${selection.packageManager} run dev`;
-  }
+  pkg.scripts["start"] = `${selection.packageManager} run dev`;
 
   write("package.json", JSON.stringify(pkg, null, 2) + "\n");
 
@@ -84,7 +74,7 @@ export const generateDapp = async (selection: Selections) => {
 
   // Log next steps
   console.log(
-    bold("\nSuccess! You're ready to start building your RootMUD dapp.")
+    bold(`\nSuccess! You're ready to start building your ${projectName} dapp.`)
   );
 
   console.log(bold("\nNext steps:") + "\n");
@@ -92,6 +82,6 @@ export const generateDapp = async (selection: Selections) => {
     green(`1. run [cd ${projectName}] to your dapp directory.`) + "\n"
   );
   console.log(
-    green(`5. run [${selection.packageManager} start] to run your dapp.`) + "\n"
+    green(`2. run [${selection.packageManager} start] to run your dapp.`) + "\n"
   );
 };
