@@ -12,6 +12,12 @@ export const workflowOptions = {
     message: "Choose how to start",
     choices: [
       {
+        title: "Default",
+        value: "default",
+        description:
+          "Default template",
+      },
+      {
         title: "MoveDID",
         value: "movedid",
         description:

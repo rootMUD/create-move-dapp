@@ -18,14 +18,14 @@ export default function Home() {
   // const [resource, setResource] = React.useState<MoveResource>();
   const [formInput, updateFormInput] = useState<{
     name: string;
-    github_acct: string;
+    github_path: string;
     description: string;
     gist_id: string;
     expired_at: number;
   }>({
-    name: 'github',
-    github_acct: '',
-    description: 'my github account.',
+    name: 'github_repo',
+    github_path: '',
+    description: 'my github repo.',
     gist_id: '',
     expired_at: 0,
   });
@@ -38,14 +38,12 @@ export default function Home() {
   }
 
   function do_add_service() {
-    const { name, description, github_acct, gist_id, expired_at } = formInput;
-    let github_url = "https://github.com/" + github_acct;
-    let gist_url = "https://gist.github.com/" + github_acct + "/" + gist_id;
+    const { name, description, github_path, expired_at } = formInput;
     return {
       type: 'entry_function_payload',
       function: DAPP_ADDRESS + '::service_aggregator::add_service',
       type_arguments: [],
-      arguments: [name, description, github_url, gist_url, "", expired_at],
+      arguments: [name, description, github_path, github_path, "", expired_at],
     };
   }
 
@@ -57,14 +55,12 @@ export default function Home() {
   }
 
   function do_update_service() {
-    const { name, description, github_acct, gist_id, expired_at } = formInput;
-    let github_url = "https://github.com/" + github_acct;
-    let gist_url = "https://gist.github.com/" + github_acct + "/" + gist_id;
+    const { name, description, github_path,  expired_at } = formInput;
     return {
       type: 'entry_function_payload',
       function: DAPP_ADDRESS + '::service_aggregator::update_service',
       type_arguments: [],
-      arguments: [name, description, github_url, gist_url, "", expired_at],
+      arguments: [name, description, github_path, github_path, "", expired_at],
     };
   }
 
@@ -237,10 +233,10 @@ export default function Home() {
   const load_service = (service: any) => {
     const { name, description, url, verification_url, expired_at } = service;
     let arr_url = url.split("/");
-    let github_acct = arr_url[arr_url.length - 1];
+    let github_path = arr_url[arr_url.length - 1];
     let arr_verification_url = verification_url.split("/");
     let gist_id = arr_verification_url[arr_verification_url.length - 1];
-    const loadInput = { name, description, github_acct, gist_id, expired_at };
+    const loadInput = { name, description, github_path, gist_id, expired_at };
     updateFormInput({ ...loadInput });
   };
   return (
@@ -328,40 +324,13 @@ export default function Home() {
         <br></br>
 
         <div className="inline-flex relative mr-3 formkit-field">
-          <p>https://github.com/</p>
+          <p>GitHub Repo path ( Begin with https:// ) :</p>
           <input
-            placeholder="github account"
+            placeholder="https://github.com/NonceGeek/MoveDID"
             className="p-4 input input-bordered input-primary ml-2"
-            onChange={(e) => updateFormInput({ ...formInput, github_acct: e.target.value })}
-            value={formInput.github_acct}
+            onChange={(e) => updateFormInput({ ...formInput, github_path: e.target.value })}
+            value={formInput.github_path}
           />
-        </div>
-        <br></br>
-        <br></br>
-        <div className="inline-flex relative mr-3 formkit-field">
-          <a href="https://docs.movedid.build/guides-for-the-scenarios-of-move-did/bind-github-and-movedid/" target="_blank">
-            <p className="underline">💡 How can I create a gist to verify my github acct?</p>
-          </a>
-        </div>
-        <br></br>
-
-        <div className="inline-flex relative mr-3 formkit-field">
-          <a href="https://gist.github.com" target="_blank">
-            <button className={'btn btn-primary font-bold mt-4  text-white rounded p-4 shadow-lg'}>
-              Create a gist!
-            </button>
-          </a>
-        </div>
-        <br></br>
-        <br></br>
-        <div className="inline-flex relative mr-3 formkit-field w-1/4">
-          <p>https://gist.github.com/{formInput.github_acct}/</p>
-        <input
-          placeholder="gist Verification URL"
-          className="p-4 input input-bordered input-primary w-full ml-2"
-          onChange={(e) => updateFormInput({ ...formInput, gist_id: e.target.value })}
-          value={formInput.gist_id}
-        />
         </div>
         <br></br>
         <br></br>

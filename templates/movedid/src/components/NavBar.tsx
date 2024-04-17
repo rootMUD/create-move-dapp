@@ -13,14 +13,18 @@ export function NavBar() {
           <Image src="/logo.png" width={64} height={64} alt="logo" />
         </a>
         <ul className="menu menu-horizontal p-0 ml-5">
-          <NavItem href="/" title="Contract Interactor" />
-          <NavItem href="/example_ui" title="Example UI" />
-          <NavItem href="/scaffold_examples" title="Examples" />
-          <NavItem href="/snippets" title="Snippets" />
+          <NavItem href="/" title="GithubBinder" />
+          <NavItem href="/github_repo_binder" title="GithubRepoBinder" />
+          <NavItem href="/service_manager" title="ServiceManager" />
+          <NavItem href="/service_events" title="ServiceEvents" />
+          <NavItem href="/lightweight_dao_manager" title="LightweightDAOManager" />
+          {/* <NavItem href="/addr" title="AddrManager" />
+          <NavItem href="/addr_events" title="AddrEvents" />
+          <NavItem href="/create_did_events" title="CreateDIDEvents" /> */}
+          {/* <NavItem href="/did_querier" title="DIDQuerier" /> */}
           <li className="font-sans font-semibold text-lg">
-            <a href="https://assistant.aptosfoundation.org/" target="_blank" rel="noreferrer">AI Assistant</a>
-            <a href="https://github.com/NonceGeek/scaffold-aptos" target="_blank" rel="noreferrer">Source Code</a>
-            <a href={MODULE_URL} target="_blank" rel="noreferrer">Contract on Explorer</a>
+            <a href="https://github.com/NonceGeek/MoveDID/tree/main/did-aptos" target="_blank">Source Code</a>
+            <a href={MODULE_URL} target="_blank">Contract on Explorer</a>
           </li>
         </ul>
       </div>
